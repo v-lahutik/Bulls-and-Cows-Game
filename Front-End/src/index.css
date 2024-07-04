@@ -1,0 +1,31 @@
+h1{
+  text-align: center;
+}
+ nav{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  
+ }
+
+ .board {
+  max-width: 295px;
+  width: 100%;
+  margin: 10px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 5px;
+}
+
+.board-squares{
+  height: 45px;
+  width: 45px;
+  font-size: 30px;
+  text-transform: uppercase;
+  border: 3px solid #ccc;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
