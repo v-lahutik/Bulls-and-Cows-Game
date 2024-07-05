@@ -1,3 +1,5 @@
+import { GameContext } from '../Context/GameProvider';
+import { useContext } from 'react';
 import * as React from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -5,11 +7,13 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function Level() {
-  const [age, setAge] = React.useState('');
+  const { chooseLevel, level } = useContext(GameContext);
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleLevelChange = (event) => {
+    chooseLevel(event.target.value);
   };
+
+  console.log("level:", level);
 
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
@@ -17,14 +21,13 @@ export default function Level() {
       <Select
         labelId="demo-select-small-label"
         id="demo-select-small"
-        value={age}
+        value={level}
         label="Level"
-        onChange={handleChange}
+        onChange={handleLevelChange}
       >
-        
-        <MenuItem value={10}>Easy</MenuItem>
-        <MenuItem value={20}>Medium</MenuItem>
-        <MenuItem value={30}>Hard</MenuItem>
+        <MenuItem value="Easy">Easy</MenuItem>
+        <MenuItem value="Medium">Medium</MenuItem>
+        <MenuItem value="Hard">Hard</MenuItem>
       </Select>
     </FormControl>
   );

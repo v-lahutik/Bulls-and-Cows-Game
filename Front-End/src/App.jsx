@@ -5,17 +5,20 @@ import Button from '@mui/material/Button';
 import Header from './components/Header';
 import AlertDialog from './components/Instructions';
 import Table from './components/Table';
+import { GameProvider } from './Context/GameProvider';
+
+
 
 function App() {
 
 
   return (
     <>
+    <GameProvider>
     <Header />
     <Table />
+  </GameProvider>
     
-    
-      
     </>
   )
 }
