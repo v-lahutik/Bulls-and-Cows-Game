@@ -1,31 +1,24 @@
-h1{
+.game-container {
   text-align: center;
-}
- nav{
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  
- }
-
- .board {
-  max-width: 295px;
-  width: 100%;
-  margin: 10px auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  row-gap: 10px;
-  column-gap: 5px;
+  padding: 20px;
 }
 
-.board-squares{
-  height: 45px;
-  width: 45px;
-  font-size: 30px;
-  text-transform: uppercase;
-  border: 3px solid #ccc;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.game-info, .difficulty-level, .gameplay {
+  margin: 20px 0;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+}
+img {
+  height: 56vh; 
+  border-radius: 35%;
+  margin: 0;
 }
