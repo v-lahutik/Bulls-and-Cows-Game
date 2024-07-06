@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import bullsAndCowsImage from '../../public/images/bulls_and_cows.png';
+import bullsAndCowsImage from '../../images/bulls_and_cows.png';
 
 const Intro = ({ playerName }) => {
   const [name, setName] = useState("");
@@ -14,14 +14,14 @@ const Intro = ({ playerName }) => {
 <img src={bullsAndCowsImage} alt="bulls And Cows Welcome" />
     <form onSubmit={handleSubmit}>
       <label>
-        What is your name?{" "}
+        What is your name?
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
       </label>
-      <button type="submit">Start Game</button>
+      <button type="submit">Let’s Go</button>
     </form>
     </>
   );

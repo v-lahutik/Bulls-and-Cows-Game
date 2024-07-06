@@ -17,6 +17,15 @@ const Game = () => {
   const [counter, setCounter] = useState(0);
   const [playAgain, setPlayAgain] = useState(false);
   const [gamesCounter, setGamesCounter] = useState(0);
+console.log(
+"secret number:", secretNumber,
+"guess:", guess,
+"bulls:", bulls,
+"cows:", cows,
+"guessAmount:", guessAmount,
+"counter:", counter,
+"playAgain:", playAgain,
+"gamesCounter:" ,gamesCounter)
 
   const messageNotClose = [
     `🤷 No luck this time! Keep trying!`,
@@ -68,11 +77,6 @@ const Game = () => {
     return uniqueDigits.length === 4;
   };
 
-  const onlyDigits = (str) => {
-    var regex = /^\d+$/;
-    return regex.test(str);
-  };
-
   const handlePlayerNameSubmit = (name) => {
     if (name === "") {
       setName("Player");
@@ -95,9 +99,7 @@ const Game = () => {
   };
 
   const handleGuess = () => {
-    if (!onlyDigits(guess)) {
-      setMessage(`⛔ Hey! It’s numbers only 🤦`);
-    } else if (guess.length !== 4) {
+     if (guess.length !== 4) {
       setMessage(`⛔ Please enter exactly 4 numbers! 🙎 🙎 `);
     } else if (!areDigitsUnique(guess)) {
       setMessage(`⛔ No repeating numbers please 🙅`);
@@ -157,15 +159,9 @@ const Game = () => {
       ) : (
         <>
         <Header />
-        <h1>🎯 Bulls 🐂 and Cows 🐄 Game</h1>
+        
           <h2>Hello, {name}! 👋</h2>
-          <div className="game-info">
-            
-            <p>🔹 The secret number has 4 unique digits.</p>
-            <p>🔹 If you guess the right number in the right place, you get a bull.</p>
-            <p>🔹 If you guess the right number but in the wrong place, you get a cow.</p>
-            <p>🔹 Let's start guessing!</p>
-          </div>
+         
           {!level ? (
             <LevelSelect onSelect={handleLevelSelect} />
           ) : (

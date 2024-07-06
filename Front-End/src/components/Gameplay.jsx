@@ -16,6 +16,7 @@ const Gameplay = ({
 
   const handleSubmit=(e)=>{
     e.preventDefault();
+    
     onGuess()
   }
   return (
@@ -30,7 +31,8 @@ const Gameplay = ({
       />
       <button onClick={onGuess}>Submit Guess</button>
       </form>
-            <p>{message}</p>
+      <p>You have {} guesses left</p>
+      <p>{message}</p>
       <p>💎 Hint: {bulls} bulls 🐂 and {cows} cows 🐄</p>
       {playAgain && (
         <button onClick={onPlayAgain}>Play Again</button>
