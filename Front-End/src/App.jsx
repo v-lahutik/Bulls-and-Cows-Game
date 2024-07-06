@@ -1,5 +1,6 @@
 import './App.css'
 import Game from './components/Game';
+import { GameProvider } from './components/Context/GameContext';
 
 
 
@@ -7,7 +8,10 @@ import Game from './components/Game';
 function App() {
   return (
     <>
-    <Game /> 
+    <GameProvider>
+    <Game />
+  </GameProvider>
+   
     </>
   )
 }

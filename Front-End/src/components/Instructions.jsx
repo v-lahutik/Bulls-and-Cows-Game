@@ -7,8 +7,6 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { VscInfo } from "react-icons/vsc";
 
-
-
 export default function Instructions() {
   const [open, setOpen] = React.useState(false);
 
