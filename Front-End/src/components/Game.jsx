@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { GameContext} from "./Context/GameContext";
+import { GameContext } from "./Context/GameContext";
 import { generateUniqueDigits, areDigitsUnique } from "./utils";
 import Intro from "./Intro";
 import LevelSelect from "./Levels";
@@ -8,18 +8,29 @@ import Header from "./Header";
 
 const Game = () => {
   const {
-    name, setName,
-    secretNumber, setSecretNumber,
-    guess, setGuess,
-    bulls, setBulls,
-    cows, setCows,
-    guessAmount, setGuessAmount,
-    level, setLevel,
-    message, setMessage,
-    counter, setCounter,
-    playAgain, setPlayAgain,
-    gamesCounter, setGamesCounter,
-    handleGuess
+    name,
+    setName,
+    secretNumber,
+    setSecretNumber,
+    guess,
+    setGuess,
+    bulls,
+    setBulls,
+    cows,
+    setCows,
+    guessAmount,
+    setGuessAmount,
+    level,
+    setLevel,
+    message,
+    setMessage,
+    counter,
+    setCounter,
+    playAgain,
+    setPlayAgain,
+    gamesCounter,
+    setGamesCounter,
+    handleGuess,
   } = useContext(GameContext);
 
   useEffect(() => {
@@ -35,7 +46,6 @@ const Game = () => {
       setName(name);
     }
   };
-  
 
   return (
     <div className="game-container">
@@ -45,21 +55,13 @@ const Game = () => {
         <>
           <Header />
           <h2>Hello, {name}! 👋</h2>
-          {!level ? (
-            <LevelSelect />
-          ) : (
-            <PlayComponent/>
-          )}
+          {!level ? <LevelSelect /> : <PlayComponent />}
         </>
       )}
     </div>
   );
 };
 
-const App = () => (
-  
-    <Game />
-
-);
+const App = () => <Game />;
 
 export default App;

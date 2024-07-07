@@ -16,3 +16,9 @@ export const generateUniqueDigits = () => {
       .filter((digit, index, array) => array.indexOf(digit) === index);
     return uniqueDigits.length === 4;
   };
+
+  export const onlyDigits=(str)=>{
+    var regex = /^\d+$/;
+    return regex.test(str);
+  }
+  

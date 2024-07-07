@@ -19,6 +19,8 @@ input[type="text"] {
 }
 img {
   height: 56vh; 
-  border-radius: 35%;
   margin: 0;
+}
+ul{
+  list-style: none;
 }

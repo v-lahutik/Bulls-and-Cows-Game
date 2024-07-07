@@ -20,13 +20,14 @@ function Restart() {
 
 
     const restartHandler=(e)=>{
-        setSecretNumber(generateUniqueDigits())
-        setGamesCounter(gamesCounter + 1);
+      setSecretNumber(generateUniqueDigits())
+      setGamesCounter(gamesCounter + 1);
       setCounter(0);
       setGuess("");
       setSecretNumber(generateUniqueDigits());
       setPlayAgain(false);
       setMessage("");
+      setLevel("")
     }
 
 
