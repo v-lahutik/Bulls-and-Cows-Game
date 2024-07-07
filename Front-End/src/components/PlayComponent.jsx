@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { GameContext } from './Context/GameContext';
-import { areDigitsUnique, generateUniqueDigits, onlyDigits} from "./utils";
+import React, { useContext, useState, useEffect } from "react";
+import { GameContext } from "./Context/GameContext";
+import { areDigitsUnique, generateUniqueDigits, onlyDigits } from "./utils";
 
 const PlayComponent = () => {
   const [allGuesses, setAllGuesses] = useState([]);
@@ -22,7 +22,7 @@ const PlayComponent = () => {
     counter,
     setCounter,
     secretNumber,
-    name
+    name,
   } = useContext(GameContext);
 
   useEffect(() => {
@@ -30,7 +30,11 @@ const PlayComponent = () => {
       const lastGuess = allGuesses[allGuesses.length - 1];
       setAllGuesses((prevGuesses) => {
         const updatedGuesses = [...prevGuesses];
-        updatedGuesses[updatedGuesses.length - 1] = { ...lastGuess, bulls, cows };
+        updatedGuesses[updatedGuesses.length - 1] = {
+          ...lastGuess,
+          bulls,
+          cows,
+        };
         return updatedGuesses;
       });
     }
@@ -48,10 +52,7 @@ const PlayComponent = () => {
       setCounter(counter + 1);
       handleGuess();
 
-      setAllGuesses((prevGuesses) => [
-        ...prevGuesses,
-        { guess, bulls, cows }
-      ]);
+      setAllGuesses((prevGuesses) => [...prevGuesses, { guess, bulls, cows }]);
 
       setGuess("");
     }
@@ -60,7 +61,8 @@ const PlayComponent = () => {
   return (
     <div className="play">
       <p>
-        You’ve chosen level: {level}. You have {guessAmount} guesses. Good luck! 🍀
+        You’ve chosen level: {level}. You have {guessAmount} guesses. Good luck!
+        🍀
       </p>
       <form onSubmit={handleSubmit}>
         <input
@@ -68,18 +70,18 @@ const PlayComponent = () => {
           value={guess}
           onChange={(e) => setGuess(e.target.value)}
           maxLength={4}
-          
           disabled={playAgain || counter >= guessAmount}
         />
         <button type="submit" disabled={playAgain || counter >= guessAmount}>
-  Submit Guess
-</button>
+          Submit Guess
+        </button>
       </form>
       <p>Your guesses:</p>
       <ul>
         {allGuesses.map((entry, index) => (
           <li key={index}>
-            Guess: {entry.guess} - Bulls: {entry.bulls} 🐂, Cows: {entry.cows} 🐄
+            Guess: {entry.guess} - Bulls: {entry.bulls} 🐂, Cows: {entry.cows}{" "}
+            🐄
           </li>
         ))}
       </ul>

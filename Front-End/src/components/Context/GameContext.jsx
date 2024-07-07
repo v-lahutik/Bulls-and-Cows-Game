@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { areDigitsUnique, generateUniqueDigits, onlyDigits} from "../utils";
+import { areDigitsUnique, generateUniqueDigits, onlyDigits } from "../utils";
 
 const GameContext = createContext(null);
 
@@ -17,14 +17,23 @@ function GameProvider({ children }) {
   const [gamesCounter, setGamesCounter] = useState(0);
 
   console.log(
-    "secret number:", secretNumber,
-    "guess:", guess,
-    "bulls:", bulls,
-    "cows:", cows,
-    "guessAmount:", guessAmount,
-    "counter:", counter,
-    "playAgain:", playAgain,
-    "level:", level
+    "Game State:",
+    "\nsecret number:",
+    secretNumber,
+    "\nguess:",
+    guess,
+    "\nbulls:",
+    bulls,
+    "\ncows:",
+    cows,
+    "\nguessAmount:",
+    guessAmount,
+    "\ncounter:",
+    counter,
+    "\nplayAgain:",
+    playAgain,
+    "\nlevel:",
+    level
   );
 
   const handleGuess = () => {
@@ -44,13 +53,13 @@ function GameProvider({ children }) {
       setMessage(
         `Congratulations ${name}!!! 👏👏👏 You guessed the right number. 🏆`
       );
+
       setPlayAgain(true);
     } else if (counter + 1 === guessAmount) {
       setMessage(
         `😢 Sorry ${name}, you have run out of guesses. The secret number was: ✨ ${secretNumber} ✨`
       );
       setPlayAgain(true);
-      
     }
   };
 
@@ -66,25 +75,33 @@ function GameProvider({ children }) {
   };
 
   const value = {
-    name, setName,
-    secretNumber, setSecretNumber,
-    guess, setGuess,
-    bulls, setBulls,
-    cows, setCows,
-    guessAmount, setGuessAmount,
-    level, setLevel,
-    message, setMessage,
-    counter, setCounter,
-    playAgain, setPlayAgain,
-    gamesCounter, setGamesCounter,
-    handleGuess, onPlayAgain
+    name,
+    setName,
+    secretNumber,
+    setSecretNumber,
+    guess,
+    setGuess,
+    bulls,
+    setBulls,
+    cows,
+    setCows,
+    guessAmount,
+    setGuessAmount,
+    level,
+    setLevel,
+    message,
+    setMessage,
+    counter,
+    setCounter,
+    playAgain,
+    setPlayAgain,
+    gamesCounter,
+    setGamesCounter,
+    handleGuess,
+    onPlayAgain,
   };
 
-  return (
-    <GameContext.Provider value={value}>
-      {children}
-    </GameContext.Provider>
-  );
+  return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 }
 
 export { GameContext, GameProvider };
