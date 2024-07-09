@@ -1,10 +1,12 @@
 const prompt = require("prompt-sync")({ sigint: true });
-//introduction starts here
+
+// Introduction starts here
 let name = prompt("What is your name? ");
 if (name === "") {
   name = "Player";
 }
 console.log(`Hello, ${name}! 👋`);
+
 // Generates random number
 function generateUniqueDigits() {
   let digits = "";
@@ -18,46 +20,40 @@ function generateUniqueDigits() {
 }
 let secretNumber = generateUniqueDigits();
 
-//for testing
-//console.log(" secretNumber:", secretNumber);
-
-//game explanation
+// Game explanation
 console.log(`🎯 Welcome to the Bulls 🐂 and Cows 🐄 Game`);
 console.log(`🔹 The secret number has 4 unique digits.`);
-console.log(
-  `🔹 If you guess the right number in the right place, you get a bull.`
-);
-console.log(
-  `🔹 If you guess the right number but in the wrong place, you get a cow.`
-);
+console.log(`🔹 If you guess the right number in the right place, you get a bull.`);
+console.log(`🔹 If you guess the right number but in the wrong place, you get a cow.`);
 console.log(`🔹 You have 8 chances to guess the secret number.`);
 console.log(`🔹 Let's start guessing!`);
 
-//game difficulty level
+// Game difficulty level
 let guessAmount;
-let level
+let level;
 function chooseLevel() {
-  const difficulty = prompt(
-    `Choose a difficulty level: easy (press E), medium (press M) or hard (press H) `
-  );
-  if (difficulty === "E") {
+  const difficulty = prompt(`Choose a difficulty level: easy (press E), medium (press M) or hard (press H) `).toLowerCase();
+  if (difficulty === "e") {
     guessAmount = 25;
-    level="EASY"
-  } else if (difficulty === "M") {
+    level = "EASY";
+  } else if (difficulty === "m") {
     guessAmount = 10;
-    level="MEDIUM"
-  } else if (difficulty === "H") {
+    level = "MEDIUM";
+  } else if (difficulty === "h") {
     guessAmount = 5;
-    level="HARD"
+    level = "HARD";
+  } else {
+    console.log(`Invalid input. Defaulting to MEDIUM level.`);
+    guessAmount = 10;
+    level = "MEDIUM";
   }
 }
 
-chooseLevel()
+chooseLevel();
 
-console.log(`You’ve chosen level: ${level}. You have ${guessAmount} guesses. Good luck! 🍀`
-)
+console.log(`You’ve chosen level: ${level}. You have ${guessAmount} guesses. Good luck! 🍀`);
 
-//random messages if player didn't guess any number
+// Random messages if player didn't guess any number
 const messageNotClose = [
   `🤷 No luck this time! Keep trying!`,
   `🤦 Not even close!`,
@@ -70,7 +66,8 @@ const messageNotClose = [
   `💡 You're sharpening your skills!`,
   `🚀 You're reaching for the stars!`,
 ];
-//random messages if player guessed some numbers
+
+// Random messages if player guessed some numbers
 const messageClose = [
   `🙌 You're on the right track!`,
   `🤩 Don't give up now! You're making progress`,
@@ -84,60 +81,54 @@ const messageClose = [
   `🌟 You're shining brightly!`,
 ];
 
-//play the game again function
+// Play the game again function
 let repeatGame = false;
-let gamesCounter=0
+let gamesCounter = 0;
 function playAgain() {
-  let play = prompt(`Do you want to play again? (yes/no) `);
-  if (play === "yes") {
+  let play = prompt(`Do you want to play again? (yes/no) `).toLowerCase();
+  if (play === "yes" || play === "y") {
     repeatGame = true;
     counter = 0;
-    gamesCounter++
+    gamesCounter++;
     secretNumber = generateUniqueDigits();
-    //clear the previous game and play again
-    console.clear()
-    console.log(`Okay, lets try again! 👊 Times played: ${gamesCounter}`)
-    chooseLevel()
-    
-    //for testing
-    // console.log("NEW secretNumber:", secretNumber);
+    // Clear the previous game and play again
+    console.clear();
+    console.log(`Okay, let's try again! 👊 Times played: ${gamesCounter}`);
+    chooseLevel();
   } else {
     repeatGame = false;
   }
 }
 
-
-//variables for validation and counting
+// Variables for validation and counting
 let guess;
 let validGuess = false;
 let counter = 0;
 
-//game starts
+// Game starts
 while (!validGuess || !repeatGame) {
   let valid = false;
   guess = prompt(`Your guess:`);
-  // variables for validation
+  // Variables for validation
   // Checks if the guess is 4 digit unique number
   function areDigitsUnique(number) {
     const numString = number.toString();
-    const uniqueDigits = numString
-      .split("")
-      .filter((digit, index, array) => array.indexOf(digit) === index);
+    const uniqueDigits = numString.split("").filter((digit, index, array) => array.indexOf(digit) === index);
     return uniqueDigits.length === 4;
   }
   const uniqueDigits = areDigitsUnique(guess);
-  //checks if contains only numbers not letters or symbols
+  // Checks if contains only numbers not letters or symbols
 
-  //regular expression
+  // Regular expression
   function onlyDigits(str) {
     var regex = /^\d+$/;
     return regex.test(str);
   }
   const onlyDigit = onlyDigits(guess);
 
-  //if the guess is 4 digits length
+  // If the guess is 4 digits length
   const fourDigits = guess.length === 4;
-  //validation and messages
+  // Validation and messages
   if (!onlyDigit) {
     console.log(`⛔ Hey! It’s numbers only 🤦`);
   } else if (!fourDigits) {
@@ -145,7 +136,6 @@ while (!validGuess || !repeatGame) {
   } else if (!uniqueDigits) {
     console.log(`⛔ No repeating numbers please 🙅`);
   } else {
-    //validGuess = true;
     counter++;
     let bulls = 0;
     let cows = 0;
@@ -158,42 +148,36 @@ while (!validGuess || !repeatGame) {
     }
     console.log(`You have guessed ${counter} out of ${guessAmount} 🙂`);
 
-    //random messages for the player
+    // Random messages for the player
     let randomMessage;
     if (bulls === 0 && cows === 0) {
-      randomMessage =
-        messageNotClose[Math.floor(Math.random() * messageNotClose.length)];
+      randomMessage = messageNotClose[Math.floor(Math.random() * messageNotClose.length)];
     } else {
-      randomMessage =
-        messageClose[Math.floor(Math.random() * messageClose.length)];
+      randomMessage = messageClose[Math.floor(Math.random() * messageClose.length)];
     }
     console.log(randomMessage);
-    console.log(`💎 Hint:${bulls} bulls 🐂 and ${cows} cows 🐄`);
+    console.log(`💎 Hint: ${bulls} bulls 🐂 and ${cows} cows 🐄`);
 
-    //if the player has guessed the right number
+    // If the player has guessed the right number
     if (guess === secretNumber) {
-      console.log(
-        `Congratulations ${name}!!! 👏👏👏 You guessed the right number. 🏆`
-      );
-      //ask the player if they want to play again
+      console.log(`Congratulations ${name}!!! 👏👏👏 You guessed the right number. 🏆`);
+      // Ask the player if they want to play again
       playAgain();
-      //if the player doesn't want to play again
+      // If the player doesn't want to play again
       if (repeatGame === false) {
         console.log(`Thanks for playing! 👋 Goodbye ${name}!`);
         break;
       }
     }
-    // if the player has guessed 8 times
+    // If the player has guessed the maximum times
     if (counter === guessAmount) {
-      console.log(
-        `😢 Sorry ${name}, you have run out of guesses. The secret number was: ✨ ${secretNumber} ✨`
-      );
-      //ask the player if they want to play again
+      console.log(`😢 Sorry ${name}, you have run out of guesses. The secret number was: ✨ ${secretNumber} ✨`);
+      // Ask the player if they want to play again
       playAgain();
-      //if the player doesn't want to play again
+      // If the player doesn't want to play again
       if (repeatGame === false) {
-        console.clear()
-        console.log(`You have played ${gamesCounter} times`)
+        console.clear();
+        console.log(`You have played ${gamesCounter} times`);
         console.log(`Thanks for playing! 👋 Goodbye ${name}!`);
         break;
       }

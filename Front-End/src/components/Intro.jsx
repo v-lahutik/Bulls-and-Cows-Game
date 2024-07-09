@@ -36,7 +36,8 @@ const Intro = ({ playerName }) => {
             <li>Medium: 10 guesses</li>
             <li>Hard: 5 guesses</li>
           </ul>
-        
+          
+
         <button type="submit">Play</button>
       </form>
     </>
