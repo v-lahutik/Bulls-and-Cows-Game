@@ -25,7 +25,10 @@ console.log(`🎯 Welcome to the Bulls 🐂 and Cows 🐄 Game`);
 console.log(`🔹 The secret number has 4 unique digits.`);
 console.log(`🔹 If you guess the right number in the right place, you get a bull.`);
 console.log(`🔹 If you guess the right number but in the wrong place, you get a cow.`);
-console.log(`🔹 You have 8 chances to guess the secret number.`);
+console.log(`🔹 Difficulty Level: You can choose a difficulty level:
+Easy (E/e): 25 guesses
+Medium (M/m): 10 guesses
+Hard (H/h): 5 guesses`);
 console.log(`🔹 Let's start guessing!`);
 
 // Game difficulty level

@@ -1,92 +1,51 @@
-# Bulls and Cows
 
-In this project we will build a two player game that is called **Bulls and Cows**.
+# Terminal-based Bulls and Cows Game
 
 ![cow icon](assets/cow.svg) ![bull icon](assets/bull.svg)
 
-## Rules
+Welcome to the Bulls and Cows Game! This is a simple command-line game where you guess a secret number with unique digits. The game will provide feedback on your guesses with "bulls" and "cows."
 
-One of the players comes up with a secret number, and the other player tries to guess it.
+## How to Play
 
-The secret number must consist of 4 digits and each digit must be **unique**.
+1. **Introduction**: The game will greet you and ask for your name. If you leave it blank, you will be referred to as "Player."
+2. **Difficulty Level**: You can choose a difficulty level:
+   - Easy (E/e): 25 guesses
+   - Medium (M/m): 10 guesses
+   - Hard (H/h): 5 guesses
+3. **Guessing**: You will have a limited number of guesses based on the difficulty level you chose. Each guess should be a 4-digit number with unique digits.
+4. **Feedback**:
+   - **Bull**: Correct digit in the correct place.
+   - **Cow**: Correct digit but in the wrong place.
+5. **Winning**: If you guess the secret number correctly, you win!
+6. **Play Again**: After each game, you will be asked if you want to play again. You can respond with "yes", "y", "no", or "n".
 
-For example:
+## Installation
 
-- `1112` would **not** be an acceptable secret number
-- `1234` on the other hand is an acceptable value for the secret number, since each digit is unique
+To run the game, you'll need Node.js installed on your system. Follow these steps to get started:
+  ```bash
+   git clone https://github.com/your-username/bulls-and-cows-game.git
+   cd bulls-and-cows-game
+   cd Terminal-based
+   node main.js
 
-After each guess, the player will get a hint to help them guess better next time around.
+# Example Gameplay
 
-The hint tells the player how many bulls and how many cows there were. What are bulls and cows?
+What is your name? John
+Hello, John! 👋
+🎯 Welcome to the Bulls 🐂 and Cows 🐄 Game
+🔹 The secret number has 4 unique digits.
+🔹 If you guess the right number in the right place, you get a bull.
+🔹 If you guess the right number but in the wrong place, you get a cow.
+🔹 You can choose a difficulty level:
+   - Easy (E/e): 25 guesses
+   - Medium (M/m): 10 guesses
+   - Hard (H/h): 5 guesses
+🔹 Let´s start guessing!
+Choose a difficulty level: easy (press E), medium (press M) or hard (press H) e
+You’ve chosen level: EASY. You have 25 guesses. Good luck! 🍀
 
-- If there are any matching digits and they are in their right positions, they are counted as *"bulls"*.
-- If in different positions, they are counted as *"cows"*.
-
-For example, with a secret number `4271`:
-
->
-    Player's try: 1234
-
-    Hint: 1 bull and 2 cows
-
-
-How did we arrive at one bull and two cows?
-The bull is the number `2` as it is in the right position.
-
-The cows are `4` and `1`, as they exist in the secret number but they are not in the right position.
-
-Do **not** disclose to the user which digit is a cow and which one is bull, just how many there are (if any).
-
-There is no limit on the number of guesses - guessing continues until the player figures out the other player's secret number.
-
-Once the player has guessed the secret number correctly, display a message to congratulate them.
-
-## Getting the input from the terminal 
-
-Our game will be player vs computer. The computer will come up with a secret number and the player will be trying to guess it.
-
-To gather the player's input we will use an npm package called [`prompt-sync`](https://github.com/heapwolf/prompt-sync).
-
-We can use the package like so:
-
-```js
-// Import package
-const prompt = require('prompt-sync')({ sigint: true });
-// Use package
-let name = prompt('What is your name? '); // Note there is a space at the end, so the input does not stick to the question
-```
-
-Then the variable name will contain the value that the user entered in the terminal.
-
-Make sure to validate the input to a certain extent. For example:
-
-- it must exist (the user can simply hit enter, but we should not accept this as a valid guess)
-- it must be 4 digits
-- each of the 4 digits must be unique
-
-## Extra
-
-Let's make this game even better!
-
-If you have the core of the game up and running, 
-here are some cool features you can add next:
-
-- __Number of attempts__ to guess the secret number: There will be no limit of guessing, but we can keep track of how many attempts the player needed to solve the puzzle.
-- __Randomized message__ every time the user has no bulls and no cows: Instead of always showing the same message, let's create a collection of fun messages every time the guess hits no digits.
-- __User's name__: Let's get the player's name, if they want to share. You can then use the name in the congratulations and  failure messages and hints. If no name is provided, you can use a default like `Player` or `Stranger`. 
-- __Another round__: Once the player has guessed the number correctly, you can ask them to play another round if they want to and restart the game.
-- __Another round stats__: If the user plays multiple rounds, you display the total of games played and the number of attempts for each game.
-- __Maximum number of attempts__: If the user cannot guess in N attemps, they lose the game.
-- __Configurable game level__: The user can choose if they want to play easy or difficult mode. In easy mode, for example, there could be no lmit on the number of attempts, while the difficult level could have a limit.
-
-All the extras are only **optional** - add one or two if you want to have a bigger challenge, but only **after** the core of the game is working. Don't forget to push your code to version control, so you have a working copy to go back to if you need to.
-
-## Deadline
-
-You have ~3,5 days to make the game work.
-
-## Deliverables
-
-A repository containing your code.
-
-**Happy coding!** 🤓
+Your guess: 1234
+You have guessed 1 out of 25 🙂
+🙌 You´re on the right track!
+💎 Hint: 1 bull 🐂 and 1 cow 🐄
+...
