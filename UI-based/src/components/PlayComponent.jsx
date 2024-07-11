@@ -5,6 +5,7 @@ import { areDigitsUnique, generateUniqueDigits, onlyDigits } from "./utils";
 const PlayComponent = () => {
   const [allGuesses, setAllGuesses] = useState([]);
 
+
   const {
     level,
     guess,
@@ -51,13 +52,13 @@ const PlayComponent = () => {
     } else {
       setCounter(counter + 1);
       handleGuess();
-
       setAllGuesses((prevGuesses) => [...prevGuesses, { guess, bulls, cows }]);
-
       setGuess("");
+      setMessage("");
     }
   };
-
+ 
+  const remainingGuesses = guessAmount - counter;
   return (
     <div className="play">
       <p>
@@ -76,16 +77,30 @@ const PlayComponent = () => {
           Submit Guess
         </button>
       </form>
-      <p>Your guesses:</p>
-      <ul>
-        {allGuesses.map((entry, index) => (
-          <li key={index}>
-            Guess: {entry.guess} - Bulls: {entry.bulls} 🐂, Cows: {entry.cows}{" "}
-            🐄
-          </li>
-        ))}
-      </ul>
       <p>{message}</p>
+      <div className="table-container">
+      <table>
+  <thead>
+    <tr>
+      <th> {remainingGuesses} / {guessAmount}</th>
+      <th>Guess</th>
+      <th>Bulls </th>
+      <th>Cows </th>
+    </tr>
+  </thead>
+  <tbody>
+    {allGuesses.map((entry, index) => (
+      <tr key={index}>
+        <td>{index +1}</td>
+        <td>{entry.guess}</td>
+        <td>{entry.bulls}🐂</td>
+        <td>{entry.cows}🐄</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+</div>
+     
       {playAgain && <button onClick={onPlayAgain}>Play Again</button>}
     </div>
   );
