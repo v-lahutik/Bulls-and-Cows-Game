@@ -101,7 +101,7 @@ const PlayComponent = () => {
 </table>
 </div>
      
-      {playAgain && <button onClick={onPlayAgain}>Play Again</button>}
+      {playAgain && <button  onClick={onPlayAgain}>Play Again</button>}
     </div>
   );
 };

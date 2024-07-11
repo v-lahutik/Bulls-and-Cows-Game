@@ -7,20 +7,8 @@
   margin: 20px 0;
 }
 
-button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-}
+/* table styling */
 
-input[type="text"] {
-  padding: 10px;
-  font-size: 16px;
-}
-img {
-  height: 56vh; 
-  margin: 0;
-}
 .table-container {
   display: flex;
   justify-content: center;
@@ -50,3 +38,120 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #ddd;
 }
+
+
+/* Intro.css */
+.intro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.intro-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.intro-left {
+  flex: 1;
+  padding: 40px;
+  text-align: center;
+}
+
+.intro-right {
+  flex: 1;
+  padding: 40px;
+}
+
+.game-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.intro-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 2px solid #8a8585;
+  border-radius: 12px;
+}
+
+.form-label {
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.name-input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.game-rules {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.game-rules p {
+  margin-bottom: 5px;
+}
+
+.game-rules ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0;
+}
+
+.play-button {
+  position: relative;
+  display: inline-block;
+  background-color: #73c434;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  padding: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.play-button:hover {
+  background-color: #a7571d;
+  transform: scale(1.05);
+}
+
+.play-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.play-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
