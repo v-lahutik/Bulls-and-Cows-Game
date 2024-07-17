@@ -1,6 +1,7 @@
 import { generateUniqueDigits } from "./utils";
 import { useContext } from "react";
 import { GameContext } from "./Context/GameContext";
+import { ColorButton } from "./styledComponents";
 
 function Restart() {
   const {
@@ -32,7 +33,8 @@ function Restart() {
 
 
   return (
-    <button onClick={restartHandler}>Restart</button>
+    
+    <ColorButton variant="contained" onClick={restartHandler}>Restart!</ColorButton>
   )
 }
 

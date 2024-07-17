@@ -20,7 +20,18 @@ export default function Instructions() {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined" onClick={handleClickOpen}
+       sx={{ 
+        borderColor: "green", 
+        color: "green", 
+        mr:2,
+        '&:hover': {
+          borderColor: "darkgreen",
+          color: "darkgreen",
+        }
+      }}
+    >
+      
         How to play
       </Button>
       <Dialog
@@ -43,7 +54,12 @@ export default function Instructions() {
           🔹 If you guess the right number but in the wrong place, you get a cow.
           </DialogContentText>
           <DialogContentText>
-          🔹 You have 8 chances to guess the secret number.
+          <p> You have 3 levels:</p>
+              <ul>
+                <li>Easy: 25 guesses</li>
+                <li>Medium: 10 guesses</li>
+                <li>Hard: 5 guesses</li>
+              </ul>
           </DialogContentText>
 
           <DialogContentText>🔹 Let's start guessing!</DialogContentText>

@@ -6,6 +6,7 @@ import LevelSelect from "./Levels";
 import PlayComponent from "./PlayComponent";
 import Header from "./Header";
 
+
 const Game = () => {
   const {
     name,

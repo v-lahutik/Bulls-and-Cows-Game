@@ -27,7 +27,7 @@ th, td {
 }
 
 th {
-  background-color: #ca8841;
+  background-color: green;
   color: white;
 }
 
@@ -116,42 +116,32 @@ tr:hover {
   padding: 0;
   margin-top: 0;
 }
+.guess-input {
+  width: 300px;
+  padding: 12px;
+  margin-bottom: 20px;
+  margin-top: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  color: green;
+  font-weight: bold;
+}
 
-.play-button {
-  position: relative;
-  display: inline-block;
-  background-color: #73c434;
-  color: black;
-  border: none;
-  border-radius: 50%;
+.alert-container {
+  min-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   padding: 20px;
-  font-size: 24px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
-.play-button:hover {
-  background-color: #a7571d;
-  transform: scale(1.05);
+.play-form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
 }
-
-.play-button span {
-  position: relative;
-  z-index: 1;
-}
-
-.play-circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 150px;
-  height: 150px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  opacity: 0;
-  pointer-events: none;
-}
-

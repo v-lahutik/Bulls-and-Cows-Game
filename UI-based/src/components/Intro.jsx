@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import bullsAndCowsImage from "../../images/bulls_and_cows.png";
-
+import { ColorButton } from "./styledComponents";
 
 const Intro = ({ playerName }) => {
   const [name, setName] = useState("");
@@ -12,7 +12,7 @@ const Intro = ({ playerName }) => {
 
   return (
     <div className="intro-container">
-      <div className="intro-content">
+     
         <div className="intro-left">
           <h1>Welcome to Bulls and Cows</h1>
           <img className="game-image" src={bullsAndCowsImage} alt="Bulls and Cows Welcome" />
@@ -39,14 +39,10 @@ const Intro = ({ playerName }) => {
                 <li>Hard: 5 guesses</li>
               </ul>
             </div>
-
-            <button className="play-button" type="submit">
-              <span>Start Playing!</span>
-              <div className="play-circle"></div>
-            </button>
+      <ColorButton variant="contained" type="submit">Start Playing!</ColorButton>
           </form>
         </div>
-      </div>
+      
     </div>
   );
 };
