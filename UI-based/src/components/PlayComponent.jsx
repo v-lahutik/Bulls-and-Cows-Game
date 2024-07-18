@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { GameContext } from "./Context/GameContext";
-import { areDigitsUnique, generateUniqueDigits, onlyDigits } from "./utils";
+import { areDigitsUnique, onlyDigits } from "./utils";
 import { ColorButton } from "./styledComponents";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
+import NumberKeyboard from "./NumberKeyboard";
 
 const PlayComponent = () => {
   const [allGuesses, setAllGuesses] = useState([]);
@@ -23,7 +24,6 @@ const PlayComponent = () => {
     guessAmount,
     counter,
     setCounter,
-    secretNumber,
     name,
   } = useContext(GameContext);
 
@@ -45,17 +45,25 @@ const PlayComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!onlyDigits(guess)) {
-      setMessage(` Numbers only! `);
+      setMessage(" Numbers only! ");
     } else if (guess.length !== 4) {
-      setMessage(` Please enter exactly 4 numbers! `);
+      setMessage(" Please enter exactly 4 numbers! ");
     } else if (!areDigitsUnique(guess)) {
-      setMessage(` No repeating numbers please `);
+      setMessage(" No repeating numbers please ");
     } else {
       setCounter(counter + 1);
       handleGuess();
       setAllGuesses((prevGuesses) => [...prevGuesses, { guess, bulls, cows }]);
       setGuess("");
       setMessage("");
+    }
+  };
+
+  const handleKeyPress = (digit) => {
+    if (digit === "backspace") {
+      setGuess((prev) => prev.slice(0, -1));
+    } else if (guess.length < 4) {
+      setGuess((prev) => prev + digit);
     }
   };
 
@@ -68,29 +76,28 @@ const PlayComponent = () => {
       </p>
       <form onSubmit={handleSubmit} className="play-form">
         <input
-        className="guess-input"
+          className="guess-input"
           type="text"
           value={guess}
           onChange={(e) => setGuess(e.target.value)}
           maxLength={4}
           disabled={playAgain || counter >= guessAmount}
         />
-        <ColorButton
-        className="submit-guess-button"
-          variant="contained"
-          type="submit"
-          disabled={playAgain || counter >= guessAmount}
-        >
-          Submit Guess
-        </ColorButton>
+        
+        <NumberKeyboard 
+          onKeyPress={handleKeyPress} 
+          onSubmit={handleSubmit} 
+          disabled={playAgain || counter >= guessAmount} 
+        />
       </form>
+      
       <div className="alert-container">
-      {message && (
+        {message && (
           <Alert severity="error" color="warning">
             {message}
           </Alert>
-        )}</div>
-  
+        )}
+      </div>
       <div className="table-container">
         <table>
           <thead>
@@ -117,8 +124,11 @@ const PlayComponent = () => {
         </table>
       </div>
       {playAgain && (
-        <ColorButton variant="contained" onClick={onPlayAgain}
-        sx={{marginTop: "50px"}}>
+        <ColorButton
+          variant="contained"
+          onClick={onPlayAgain}
+          sx={{ marginTop: "50px" }}
+        >
           Play again
         </ColorButton>
       )}

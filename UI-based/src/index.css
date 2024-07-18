@@ -145,3 +145,25 @@ tr:hover {
   height: 100%;
   padding: 20px;
 }
+
+.number-keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.number-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.number-key {
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+}
+.submit-guess-button{
+  height: 50px;
+}
