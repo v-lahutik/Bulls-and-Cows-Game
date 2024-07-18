@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorButton, KeyboardButton, SubmitButton } from "./styledComponents"; // Use the same styled button
+import { KeyboardButton, SubmitButton } from "./styledComponents"; 
 
 
 const NumberKeyboard = ({ onKeyPress, onSubmit, disabled }) => {

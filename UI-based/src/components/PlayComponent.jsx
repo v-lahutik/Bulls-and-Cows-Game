@@ -13,9 +13,7 @@ const PlayComponent = () => {
     guess,
     setGuess,
     bulls,
-    setBulls,
     cows,
-    setCows,
     message,
     setMessage,
     playAgain,
@@ -24,7 +22,7 @@ const PlayComponent = () => {
     guessAmount,
     counter,
     setCounter,
-    name,
+    resultMessage,
   } = useContext(GameContext);
 
   useEffect(() => {
@@ -55,7 +53,6 @@ const PlayComponent = () => {
       handleGuess();
       setAllGuesses((prevGuesses) => [...prevGuesses, { guess, bulls, cows }]);
       setGuess("");
-      setMessage("");
     }
   };
 
@@ -68,6 +65,7 @@ const PlayComponent = () => {
   };
 
   const remainingGuesses = guessAmount - counter;
+
   return (
     <div className="play">
       <p>
@@ -131,6 +129,9 @@ const PlayComponent = () => {
         >
           Play again
         </ColorButton>
+      )}
+      {resultMessage && (
+        <p className="game-message">{resultMessage}</p>
       )}
     </div>
   );

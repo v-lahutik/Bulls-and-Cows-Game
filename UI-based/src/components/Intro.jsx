@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import bullsAndCowsImage from "../../images/bulls_and_cows.png";
 import { ColorButton } from "./styledComponents";
 
+//Intro page before the game starts
 const Intro = ({ playerName }) => {
   const [name, setName] = useState("");
 
@@ -12,7 +13,6 @@ const Intro = ({ playerName }) => {
 
   return (
     <div className="intro-container">
-     
         <div className="intro-left">
           <h1>Welcome to Bulls and Cows</h1>
           <img className="game-image" src={bullsAndCowsImage} alt="Bulls and Cows Welcome" />

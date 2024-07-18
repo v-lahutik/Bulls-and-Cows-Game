@@ -12,29 +12,32 @@ function GameProvider({ children }) {
   const [guessAmount, setGuessAmount] = useState(0);
   const [level, setLevel] = useState("");
   const [message, setMessage] = useState("");
+  const [resultMessage, setResultMessage] = useState("");
   const [counter, setCounter] = useState(0);
   const [playAgain, setPlayAgain] = useState(false);
   const [gamesCounter, setGamesCounter] = useState(0);
 
-  console.log(
-    "Game State:",
-    "\nsecret number:",
-    secretNumber,
-    "\nguess:",
-    guess,
-    "\nbulls:",
-    bulls,
-    "\ncows:",
-    cows,
-    "\nguessAmount:",
-    guessAmount,
-    "\ncounter:",
-    counter,
-    "\nplayAgain:",
-    playAgain,
-    "\nlevel:",
-    level
-  );
+  //for testing purposes
+  console.log("secret number", secretNumber)
+  // console.log(
+  //   "Game State:",
+  //   "\nsecret number:",
+  //   secretNumber,
+  //   "\nguess:",
+  //   guess,
+  //   "\nbulls:",
+  //   bulls,
+  //   "\ncows:",
+  //   cows,
+  //   "\nguessAmount:",
+  //   guessAmount,
+  //   "\ncounter:",
+  //   counter,
+  //   "\nplayAgain:",
+  //   playAgain,
+  //   "\nlevel:",
+  //   level
+  // );
 
   const handleGuess = () => {
     let bulls = 0;
@@ -50,13 +53,13 @@ function GameProvider({ children }) {
     setCows(cows);
 
     if (guess === secretNumber) {
-      setMessage(
+      setResultMessage(
         `Congratulations ${name}!!! 👏👏👏 You guessed the right number. 🏆`
       );
 
       setPlayAgain(true);
     } else if (counter + 1 === guessAmount) {
-      setMessage(
+      setResultMessage(
         `😢 Sorry ${name}, you have run out of guesses. The secret number was: ✨ ${secretNumber} ✨`
       );
       setPlayAgain(true);
@@ -72,6 +75,7 @@ function GameProvider({ children }) {
     setPlayAgain(false);
     setMessage("");
     setLevel("");
+    setResultMessage("");
   };
 
   const value = {
@@ -99,6 +103,8 @@ function GameProvider({ children }) {
     setGamesCounter,
     handleGuess,
     onPlayAgain,
+    setResultMessage,
+    resultMessage,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

@@ -6,32 +6,12 @@ import LevelSelect from "./Levels";
 import PlayComponent from "./PlayComponent";
 import Header from "./Header";
 
-
 const Game = () => {
   const {
     name,
     setName,
-    secretNumber,
     setSecretNumber,
-    guess,
-    setGuess,
-    bulls,
-    setBulls,
-    cows,
-    setCows,
-    guessAmount,
-    setGuessAmount,
-    level,
-    setLevel,
-    message,
-    setMessage,
-    counter,
-    setCounter,
-    playAgain,
-    setPlayAgain,
-    gamesCounter,
-    setGamesCounter,
-    handleGuess,
+    level
   } = useContext(GameContext);
 
   useEffect(() => {
