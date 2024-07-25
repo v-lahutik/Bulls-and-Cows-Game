@@ -1,60 +1,9 @@
-.game-container {
-  text-align: center;
-  padding: 20px;
-}
-
-.game-info, .difficulty-level, .gameplay {
-  margin: 20px 0;
-}
-
-/* table styling */
-
-.table-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  border-radius: 8px;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-  max-width: 600px;
-  margin: 2px;
-}
-th, td {
-  padding: 10px;
-  
-}
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-th {
-  background-color: green;
-  color: white;
-}
-th:first-child {
-  border-top-left-radius: 8px;
-}
-th:last-child {
-  border-top-right-radius: 8px;
-}
-tr:last-child td:first-child {
-  border-bottom-left-radius: 8px;
-}
-tr:last-child td:last-child {
-  border-bottom-right-radius: 8px;
-}
-tr:hover {
-  background-color: #ddd;
-}
-
 /* Intro.css */
 .intro-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  padding: 20px;
 }
 
 .intro-content {
@@ -69,20 +18,14 @@ tr:hover {
 }
 
 .intro-left {
-  flex: 1;
-  padding: 40px;
   text-align: center;
-}
-
-.intro-right {
-  flex: 1;
-  padding: 40px;
+  width: 100%;
 }
 
 .game-image {
   max-width: 100%;
-  height: auto;
-  margin-top: 20px;
+  height: 300px;
+  
 }
 
 .intro-form {
@@ -124,6 +67,33 @@ tr:hover {
   padding: 0;
   margin-top: 0;
 }
+
+/* play component */
+
+.game-container {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid green;
+  width: 700px;
+  min-height: 700px;
+  margin: 0 auto;
+}
+
+.game-info, .difficulty-level, .gameplay {
+  margin: 20px 0;
+  
+}
+
+
+.play-form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+
+}
 .guess-input {
   width: 300px;
   padding: 12px;
@@ -136,7 +106,6 @@ tr:hover {
   color: green;
   font-weight: bold;
 }
-
 .alert-container {
   min-width: 600px;
   display: flex;
@@ -145,15 +114,6 @@ tr:hover {
   height: 100%;
   padding: 20px;
 }
-.play-form{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  padding: 20px;
-}
-
 .number-keyboard {
   display: flex;
   flex-direction: column;
@@ -175,3 +135,45 @@ tr:hover {
 .submit-guess-button{
   height: 50px;
 }
+
+/* table styling */
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  border-radius: 8px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 500px;
+  margin: 2px;
+}
+th, td {
+  padding: 10px;
+  
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+th {
+  background-color: green;
+  color: white;
+}
+th:first-child {
+  border-top-left-radius: 8px;
+}
+th:last-child {
+  border-top-right-radius: 8px;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+tr:hover {
+  background-color: #ddd;
+}
+

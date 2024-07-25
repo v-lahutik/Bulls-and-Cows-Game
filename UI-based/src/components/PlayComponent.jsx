@@ -7,6 +7,7 @@ import NumberKeyboard from "./NumberKeyboard";
 
 const PlayComponent = () => {
   const [allGuesses, setAllGuesses] = useState([]);
+  const [showAlert, setShowAlert] = useState(true); 
 
   const {
     level,
@@ -44,15 +45,20 @@ const PlayComponent = () => {
     e.preventDefault();
     if (!onlyDigits(guess)) {
       setMessage(" Numbers only! ");
+      setShowAlert(true)
     } else if (guess.length !== 4) {
       setMessage(" Please enter exactly 4 numbers! ");
+      setShowAlert(true)
     } else if (!areDigitsUnique(guess)) {
       setMessage(" No repeating numbers please ");
+      setShowAlert(true)
     } else {
       setCounter(counter + 1);
       handleGuess();
       setAllGuesses((prevGuesses) => [...prevGuesses, { guess, bulls, cows }]);
       setGuess("");
+      setShowAlert(false);
+
     }
   };
 
@@ -63,6 +69,7 @@ const PlayComponent = () => {
       setGuess((prev) => prev + digit);
     }
   };
+
 
   const remainingGuesses = guessAmount - counter;
 
@@ -88,14 +95,25 @@ const PlayComponent = () => {
           disabled={playAgain || counter >= guessAmount} 
         />
       </form>
-      
+     
       <div className="alert-container">
-        {message && (
+        {message && showAlert && ( 
           <Alert severity="error" color="warning">
             {message}
           </Alert>
-        )}
+        )}{resultMessage && (
+        <p className="game-message">{resultMessage}</p>
+      )}
       </div>
+      {playAgain && (
+        <ColorButton
+          variant="contained"
+          onClick={onPlayAgain}
+          sx={{ marginTop: "10px" }}
+        >
+          Play again
+        </ColorButton>
+      )}
       <div className="table-container">
         <table>
           <thead>
@@ -121,18 +139,8 @@ const PlayComponent = () => {
           </tbody>
         </table>
       </div>
-      {playAgain && (
-        <ColorButton
-          variant="contained"
-          onClick={onPlayAgain}
-          sx={{ marginTop: "50px" }}
-        >
-          Play again
-        </ColorButton>
-      )}
-      {resultMessage && (
-        <p className="game-message">{resultMessage}</p>
-      )}
+       
+      
     </div>
   );
 };
