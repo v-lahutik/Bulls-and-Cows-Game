@@ -4,6 +4,7 @@ import { generateUniqueDigits } from "./utils";
 import { useContext } from "react";
 import { GameContext } from "./Context/GameContext";
 import { ColorButton } from "./styledComponents";
+import { AiFillHome } from "react-icons/ai";
 
 function Header() {
   const {
@@ -15,6 +16,7 @@ function Header() {
     setPlayAgain,
     gamesCounter,
     setGamesCounter,
+    setName, 
   } = useContext(GameContext);
 
   const restartHandler = (e) => {
@@ -22,14 +24,21 @@ function Header() {
     setGamesCounter(gamesCounter + 1);
     setCounter(0);
     setGuess("");
-    setSecretNumber(generateUniqueDigits());
     setPlayAgain(false);
     setMessage("");
     setLevel("");
   };
 
+  const homeHandler = () => {
+    setName(""); 
+  };
+
   return (
     <nav>
+      <ColorButton variant="contained" onClick={homeHandler} sx={{ p: 1.3 }}>
+        <AiFillHome />
+      </ColorButton>
+
       <Instructions />
       <ColorButton variant="contained" onClick={restartHandler}>
         Restart!
@@ -38,4 +47,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Header; 

@@ -1,5 +1,21 @@
 /* Intro.css */
+body{
+  background-image: url("../images/farm.jpg"); 
+  background-size: cover; 
+  background-position: center; 
+  height: 100vh; 
+  width: 100%; 
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+}
 .intro-container {
+ 
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,9 +87,15 @@
 /* play component */
 
 .game-container {
+  position: relative; 
+  background: rgba(255, 255, 255, 0.3); 
+  backdrop-filter: blur(10px); 
+  border-radius: 10px; 
+  padding: 20px; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
   text-align: center;
   padding: 20px;
-  border: 2px solid green;
   width: 700px;
   min-height: 700px;
   margin: 0 auto;

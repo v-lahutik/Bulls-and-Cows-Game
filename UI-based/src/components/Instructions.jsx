@@ -25,7 +25,7 @@ export default function Instructions() {
        sx={{ 
         borderColor: "green", 
         color: "green", 
-        mr:2,
+        m:2,
         '&:hover': {
           borderColor: "darkgreen",
           color: "darkgreen",
