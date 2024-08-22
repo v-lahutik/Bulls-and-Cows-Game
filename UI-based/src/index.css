@@ -1,21 +1,23 @@
-/* Intro.css */
-body{
-  background-image: url("../images/farm.jpg"); 
-  background-size: cover; 
-  background-position: center; 
-  height: 100vh; 
-  width: 100%; 
-  margin: 0;
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
 
+/* Intro.css */
+body {
+  background-image: url("../images/farm.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  
+  font-size: 1.1rem;
+  font-family: "Merriweather Sans", sans-serif;
 }
-.intro-container {
- 
 
+.intro-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,13 +39,22 @@ body{
   text-align: center;
   width: 100%;
 }
+h1 {
+  font-family: "Luckiest Guy", cursive;
+  font-weight: 400;
+  font-style: normal;
+  padding-top: 20px;
+  font-size: 2.5rem;
+}
 
 .game-image {
   max-width: 100%;
   height: 300px;
-  
 }
-
+.arrow {
+  color: green;
+  font-weight: bold;
+}
 .intro-form {
   max-width: 400px;
   margin: 0 auto;
@@ -62,11 +73,16 @@ body{
 
 .name-input {
   width: 100%;
+  max-width: 300px;
+  margin-top: 10px;
   padding: 12px;
-  margin-top: 12px;
+
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 2px solid green;
   border-radius: 8px;
+  color: green;
+  font-weight: bold;
+  text-align: center;
 }
 
 .game-rules {
@@ -87,11 +103,11 @@ body{
 /* play component */
 
 .game-container {
-  position: relative; 
-  background: rgba(255, 255, 255, 0.3); 
-  backdrop-filter: blur(10px); 
-  border-radius: 10px; 
-  padding: 20px; 
+  position: relative;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
   text-align: center;
@@ -101,20 +117,28 @@ body{
   margin: 0 auto;
 }
 
-.game-info, .difficulty-level, .gameplay {
+.game-info,
+.difficulty-level,
+.gameplay {
   margin: 20px 0;
-  
 }
 
-
-.play-form{
+.confettiWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.play-form {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   height: 100%;
   padding: 20px;
-
 }
 .guess-input {
   width: 300px;
@@ -154,7 +178,7 @@ body{
   height: 50px;
   font-size: 30px;
 }
-.submit-guess-button{
+.submit-guess-button {
   height: 50px;
 }
 
@@ -172,9 +196,9 @@ table {
   max-width: 500px;
   margin: 2px;
 }
-th, td {
+th,
+td {
   padding: 10px;
-  
 }
 tr:nth-child(even) {
   background-color: #f2f2f2;
@@ -198,4 +222,3 @@ tr:last-child td:last-child {
 tr:hover {
   background-color: #ddd;
 }
-

@@ -1,5 +1,3 @@
-import './App.css'
-
 import Game from './components/Game';
 import { GameProvider } from './components/Context/GameContext';
 

@@ -4,11 +4,15 @@ import { areDigitsUnique, onlyDigits } from "./utils";
 import { ColorButton } from "./styledComponents";
 import Alert from "@mui/material/Alert";
 import NumberKeyboard from "./NumberKeyboard";
+import Confetti from "react-confetti";
+import useWindowSize from 'react-use/lib/useWindowSize'
+
 
 const PlayComponent = () => {
   const [allGuesses, setAllGuesses] = useState([]);
   const [showAlert, setShowAlert] = useState(true); 
-
+  const { width, height } = useWindowSize()
+  
   const {
     level,
     guess,
@@ -26,6 +30,7 @@ const PlayComponent = () => {
     resultMessage,
   } = useContext(GameContext);
 
+ 
   useEffect(() => {
     if (allGuesses.length > 0 && counter === allGuesses.length) {
       const lastGuess = allGuesses[allGuesses.length - 1];
@@ -75,11 +80,14 @@ const PlayComponent = () => {
 
   return (
     <div className="play">
+      
+      {playAgain && resultMessage.includes("Congratulations") && <div className="confettiWrapper"><Confetti /></div>}
       <p>
         You’ve chosen level: {level}. You have {guessAmount} guesses. Good luck!
         🍀
       </p>
       <form onSubmit={handleSubmit} className="play-form">
+      
         <input
           className="guess-input"
           type="text"
@@ -132,8 +140,8 @@ const PlayComponent = () => {
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{entry.guess}</td>
-                <td>{entry.bulls}🐂</td>
-                <td>{entry.cows}🐄</td>
+                <td>{entry.bulls} 🐂</td>
+                <td>{entry.cows} 🐄</td>
               </tr>
             ))}
           </tbody>
