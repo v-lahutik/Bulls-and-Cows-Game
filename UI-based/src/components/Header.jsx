@@ -3,7 +3,7 @@ import Instructions from "./Instructions";
 import { generateUniqueDigits } from "./utils";
 import { useContext } from "react";
 import { GameContext } from "./Context/GameContext";
-import { ColorButton } from "./styledComponents";
+import { ColorButton } from "./Buttons";
 import { AiFillHome } from "react-icons/ai";
 
 function Header() {
@@ -16,7 +16,8 @@ function Header() {
     setPlayAgain,
     gamesCounter,
     setGamesCounter,
-    setName, 
+    setName,
+    setResultMessage,
   } = useContext(GameContext);
 
   const restartHandler = (e) => {
@@ -31,7 +32,13 @@ function Header() {
 
   const homeHandler = () => {
     setName(""); 
+    setResultMessage("");
+    setMessage("");
+    setPlayAgain(false);
+    setGuess("");
+    setLevel("");
   };
+
 
   return (
     <nav>

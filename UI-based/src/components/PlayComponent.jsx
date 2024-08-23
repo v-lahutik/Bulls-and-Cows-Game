@@ -1,17 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { GameContext } from "./Context/GameContext";
 import { areDigitsUnique, onlyDigits } from "./utils";
-import { ColorButton } from "./styledComponents";
+import { ColorButton } from "./Buttons";
 import Alert from "@mui/material/Alert";
 import NumberKeyboard from "./NumberKeyboard";
 import Confetti from "react-confetti";
-import useWindowSize from 'react-use/lib/useWindowSize'
-
 
 const PlayComponent = () => {
   const [allGuesses, setAllGuesses] = useState([]);
   const [showAlert, setShowAlert] = useState(true); 
-  const { width, height } = useWindowSize()
   
   const {
     level,

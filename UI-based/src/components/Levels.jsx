@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { GameContext } from "./Context/GameContext";
-import { ColorButton } from "./styledComponents";
+import { ColorButton } from "./Buttons";
 import Box from "@mui/material/Box";
 import ButtonGroup from "@mui/material/ButtonGroup";
 

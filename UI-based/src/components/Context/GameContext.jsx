@@ -54,13 +54,12 @@ function GameProvider({ children }) {
 
     if (guess === secretNumber) {
       setResultMessage(
-        `Congratulations ${name}!!! 👏👏👏 You guessed the right number. 🏆`
-      );
-
+        `Congratulations ${name}!!!👏👏👏 \nYou guessed the right number. 🏆`
+    );
       setPlayAgain(true);
     } else if (counter + 1 === guessAmount) {
       setResultMessage(
-        `😢 Sorry ${name}, you have run out of guesses. The secret number was: ✨ ${secretNumber} ✨`
+        `😢 Sorry ${name}, you have run out of guesses. \nThe secret number was: ✨ ${secretNumber} ✨`
       );
       setPlayAgain(true);
     }

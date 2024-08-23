@@ -2,8 +2,6 @@ import Game from './components/Game';
 import { GameProvider } from './components/Context/GameContext';
 
 
-
-
 function App() {
   return (
     <>

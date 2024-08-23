@@ -34,7 +34,6 @@ export default function Instructions() {
         }
       }}
     >
-      
         How to play
       </Button>
       <Dialog

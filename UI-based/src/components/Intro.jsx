@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import bullsAndCowsImage from "../../images/bulls_and_cows.png";
-import { ColorButton } from "./styledComponents";
+import { ColorButton } from "./Buttons";
 import { TiArrowRightOutline } from "react-icons/ti";
 
 //Intro page before the game starts

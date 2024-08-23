@@ -1,5 +1,5 @@
 import React from "react";
-import { KeyboardButton, SubmitButton } from "./styledComponents"; 
+import { KeyboardButton, SubmitButton } from "./Buttons"; 
 
 
 const NumberKeyboard = ({ onKeyPress, onSubmit, disabled }) => {

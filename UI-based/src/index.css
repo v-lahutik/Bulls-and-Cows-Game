@@ -160,6 +160,13 @@ h1 {
   height: 100%;
   padding: 20px;
 }
+.game-message{
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 50px;
+  white-space: pre-line;
+
+}
 .number-keyboard {
   display: flex;
   flex-direction: column;
