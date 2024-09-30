@@ -1,5 +1,5 @@
 import React from "react";
-import { KeyboardButton, SubmitButton } from "./Buttons"; 
+import { DeleteButton, KeyboardButton, SubmitButton } from "./Buttons"; 
 
 
 const NumberKeyboard = ({ onKeyPress, onSubmit, disabled }) => {
@@ -18,9 +18,9 @@ const NumberKeyboard = ({ onKeyPress, onSubmit, disabled }) => {
               {digit}
             </KeyboardButton>
           ))}
-          <KeyboardButton onClick={() => onKeyPress("backspace")} className="number-key">
+          <DeleteButton onClick={() => onKeyPress("backspace")} className="number-key">
             ⌫
-          </KeyboardButton>
+          </DeleteButton>
         </div>
         <div className="number-row">
           {secondRowDigits.map((digit) => (

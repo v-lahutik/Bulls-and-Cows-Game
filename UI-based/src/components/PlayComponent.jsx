@@ -3,13 +3,15 @@ import { GameContext } from "./Context/GameContext";
 import { areDigitsUnique, onlyDigits } from "./utils";
 import { ColorButton } from "./Buttons";
 import Alert from "@mui/material/Alert";
-import NumberKeyboard from "./NumberKeyboard";
+import NumberKeyboard from "./NumberKeyboard.jsx";  // Desktop keyboard
+import MobileKeyboard from "./MobileKeyboard.jsx";  // Mobile keyboard
 import Confetti from "react-confetti";
 
 const PlayComponent = () => {
   const [allGuesses, setAllGuesses] = useState([]);
-  const [showAlert, setShowAlert] = useState(true); 
-  
+  const [showAlert, setShowAlert] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);  // Mobile detection
+
   const {
     level,
     guess,
@@ -27,7 +29,17 @@ const PlayComponent = () => {
     resultMessage,
   } = useContext(GameContext);
 
- 
+  // Handle screen resize to detect mobile or desktop view
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     if (allGuesses.length > 0 && counter === allGuesses.length) {
       const lastGuess = allGuesses[allGuesses.length - 1];
@@ -47,20 +59,19 @@ const PlayComponent = () => {
     e.preventDefault();
     if (!onlyDigits(guess)) {
       setMessage(" Numbers only! ");
-      setShowAlert(true)
+      setShowAlert(true);
     } else if (guess.length !== 4) {
       setMessage(" Please enter exactly 4 numbers! ");
-      setShowAlert(true)
+      setShowAlert(true);
     } else if (!areDigitsUnique(guess)) {
       setMessage(" No repeating numbers please ");
-      setShowAlert(true)
+      setShowAlert(true);
     } else {
       setCounter(counter + 1);
       handleGuess();
       setAllGuesses((prevGuesses) => [...prevGuesses, { guess, bulls, cows }]);
       setGuess("");
       setShowAlert(false);
-
     }
   };
 
@@ -72,19 +83,20 @@ const PlayComponent = () => {
     }
   };
 
-
   const remainingGuesses = guessAmount - counter;
 
   return (
     <div className="play">
-      
-      {playAgain && resultMessage.includes("Congratulations") && <div className="confettiWrapper"><Confetti /></div>}
+      {playAgain && resultMessage.includes("Congratulations") && (
+        <div className="confettiWrapper">
+          <Confetti />
+        </div>
+      )}
       <p>
         You’ve chosen level: {level}. You have {guessAmount} guesses. Good luck!
         🍀
       </p>
       <form onSubmit={handleSubmit} className="play-form">
-      
         <input
           className="guess-input"
           type="text"
@@ -94,22 +106,31 @@ const PlayComponent = () => {
           disabled={playAgain || counter >= guessAmount}
         />
         
-        <NumberKeyboard 
-          onKeyPress={handleKeyPress} 
-          onSubmit={handleSubmit} 
-          disabled={playAgain || counter >= guessAmount} 
-        />
+        {/* Conditionally render Mobile or Desktop keyboard */}
+        {isMobile ? (
+          <MobileKeyboard
+            onKeyPress={handleKeyPress}
+            onSubmit={handleSubmit}
+            disabled={playAgain || counter >= guessAmount}
+          />
+        ) : (
+          <NumberKeyboard
+            onKeyPress={handleKeyPress}
+            onSubmit={handleSubmit}
+            disabled={playAgain || counter >= guessAmount}
+          />
+        )}
       </form>
-     
+
       <div className="alert-container">
-        {message && showAlert && ( 
+        {message && showAlert && (
           <Alert severity="error" color="warning">
             {message}
           </Alert>
-        )}{resultMessage && (
-        <p className="game-message">{resultMessage}</p>
-      )}
+        )}
+        {resultMessage && <p className="game-message">{resultMessage}</p>}
       </div>
+
       {playAgain && (
         <ColorButton
           variant="contained"
@@ -119,6 +140,7 @@ const PlayComponent = () => {
           Play again
         </ColorButton>
       )}
+
       <div className="table-container">
         <table>
           <thead>
@@ -144,8 +166,6 @@ const PlayComponent = () => {
           </tbody>
         </table>
       </div>
-       
-      
     </div>
   );
 };

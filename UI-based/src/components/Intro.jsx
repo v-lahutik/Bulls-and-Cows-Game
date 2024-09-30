@@ -14,7 +14,7 @@ const Intro = ({ playerName }) => {
 
   return (
     <div className="intro-container">
-      <div className="intro-left">
+      <div className="intro-top">
         <h1>Welcome to Bulls and Cows</h1>
         
         <img
@@ -23,7 +23,7 @@ const Intro = ({ playerName }) => {
           alt="Bulls and Cows Welcome"
         />
       </div>
-      <div className="intro-right">
+      <div className="intro-bottom">
         <form onSubmit={handleSubmit} className="intro-form">
           <label className="form-label">
             What is your name?

@@ -1,11 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
 
+:root {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 /* Intro.css */
 body {
   background-image: url("../images/farm.jpg");
   background-size: cover;
   background-position: center;
+  
   height: 100vh;
   width: 100%;
   margin: 0;
@@ -35,7 +41,7 @@ body {
   overflow: hidden;
 }
 
-.intro-left {
+.intro-top {
   text-align: center;
   width: 100%;
 }
@@ -111,27 +117,51 @@ h1 {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
   text-align: center;
-  padding: 20px;
   width: 700px;
   min-height: 700px;
   margin: 0 auto;
 }
 
-.game-info,
-.difficulty-level,
-.gameplay {
-  margin: 20px 0;
+/* Header (nav) */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+ 
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
-.confettiWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
+.difficulty-level {
+  text-align: center;
+  margin-top: 20px;
 }
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* game in play */
+
+.play {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+ 
+}
+
 .play-form {
   display: flex;
   justify-content: center;
@@ -160,12 +190,12 @@ h1 {
   height: 100%;
   padding: 20px;
 }
-.game-message{
+
+.game-message {
   font-size: 1.5rem;
   text-align: center;
   line-height: 50px;
   white-space: pre-line;
-
 }
 .number-keyboard {
   display: flex;
@@ -180,33 +210,38 @@ h1 {
   margin-bottom: 10px;
 }
 
-.number-key {
+ .number-key {
   width: 50px;
   height: 50px;
   font-size: 30px;
-}
+} 
+
 .submit-guess-button {
   height: 50px;
 }
 
-/* table styling */
 
+/* Table styling */
 .table-container {
   display: flex;
   justify-content: center;
-  margin: 20px;
-  border-radius: 8px;
-}
-table {
-  border-collapse: collapse;
   width: 100%;
+  overflow-x: auto;
+  margin: 20px;
+}
+
+table {
+  width: 90%;
   max-width: 500px;
   margin: 2px;
+  border-collapse: collapse;
 }
-th,
-td {
+
+th, td {
   padding: 10px;
+  text-align: center;
 }
+
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
@@ -228,4 +263,222 @@ tr:last-child td:last-child {
 }
 tr:hover {
   background-color: #ddd;
+}
+ /* winner container styling  */
+.confettiWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+ 
+  body {
+    font-size: 1rem;
+  }
+
+  .intro-top h1 {
+    font-size: 2rem;
+  }
+
+  .intro-form {
+    max-width: 90%;
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+
+  .name-input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .game-image {
+    height: 200px;
+  }
+
+  .game-rules p, .game-rules ul li {
+    font-size: 0.9rem;
+  }
+ /* play component */
+  .game-container {
+    width: 100%;
+    min-height: 600px;
+    padding: 15px;
+  }
+
+  nav {
+   
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .difficulty-level h3 {
+    font-size: 1.1rem;
+  }
+/* play in action */
+.play-form {
+  padding: 15px;
+}
+
+.guess-input {
+  width: 220px;
+  font-size: 0.9rem;
+}
+
+.alert-container {
+  min-width: 100%;
+  padding: 10px;
+}
+
+.number-key {
+  width: 45px;
+  height: 45px;
+  font-size: 1rem;
+}
+
+th, td {
+  font-size: 0.9rem;
+}
+
+.table-container {
+  padding: 10px;
+}
+
+}
+
+@media (max-width: 740px) and (min-width: 472px) {
+  .game-container {
+    padding: 10px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .play {
+    padding: 10px; /* Reduce padding */
+    width: 100%; /* Ensure it takes full width */
+    max-width: 90%; /* Make sure it doesn't grow beyond 90% of screen width */
+    margin: 0 auto; /* Center it horizontally */
+  }
+
+  .guess-input {
+    width: 220px; /* Adjust width for smaller screens */
+    font-size: 0.9rem; /* Adjust font size */
+  }
+
+  .alert-container {
+    min-width: 100%; /* Ensure it takes full width */
+    padding: 10px; /* Adjust padding */
+  }
+
+  .number-key {
+    width: 45px; /* Adjust key size */
+    height: 45px;
+    font-size: 1rem; /* Adjust font size */
+  }
+
+  th, td {
+    font-size: 0.9rem; /* Adjust table text size */
+  }
+
+  .table-container {
+    padding: 10px; /* Adjust padding */
+  }
+ 
+}
+nav {
+  width: 100%; /* Ensure nav takes full width */
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+  
+  justify-content: center;
+  padding: 10px;
+}
+
+h2 {
+  font-size: 1.5rem; 
+  margin-bottom: 15px;
+}
+
+.difficulty-level {
+  width: 100%; 
+  text-align: center;
+}
+
+.difficulty-level h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+
+@media (max-width: 480px) {
+  .game-container {
+    padding: 10px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 90%;
+  }
+
+  /* play component */
+  
+  nav {
+  
+    align-items: center;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+  
+
+  .difficulty-level h3 {
+    font-size: 0.8rem;
+  }
+  /* play in action */
+  .play {
+    padding: 10px; /* Reduce padding */
+    width: 100%;
+    max-width: 90%; /* Ensure it doesn't exceed 90% */
+    margin: 0 auto; /* Center it horizontally */
+  }
+  .play-form {
+    padding: 10px;
+  }
+
+  .guess-input {
+    width: 180px;
+    font-size: 0.8rem;
+  }
+
+  .alert-container {
+    padding: 10px;
+  }
+
+   .number-key {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  } 
+  
+
+  .number-row {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center align buttons */
+  }
+  th, td {
+    font-size: 0.8rem;
+  }
+
 }
