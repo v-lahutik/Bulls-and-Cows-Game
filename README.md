@@ -14,5 +14,6 @@ The UI-based version of Bulls and Cows game features a graphical user interface,
 
 👉 [Read more](https://github.com/v-lahutik/Bulls-and-Cows-Game/blob/main/UI-based/README.md)
 
+![screenshot](assets/screenshot.png)
 ## 🎮 How to Play
 Each version has its own instructions on how to install, run, and play the game. Please refer to the respective README files in each directory for detailed instructions.
